@@ -20,7 +20,7 @@ import java.util.List;
 public class StudentDto {
 
     private String name;
-
+    private Long id;
     private String rollNumber;
     private String phoneNumber;
 

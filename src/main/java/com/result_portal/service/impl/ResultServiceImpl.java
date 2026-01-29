@@ -31,7 +31,7 @@ public class ResultServiceImpl implements ResultService {
 
     @Override
     public ResultDto createResult(ResultDto resultDto) {
-        // first fetch the student if it is existing or not
+        // first fetching the student if it is existing or not
         Student student = studentRepository.findByRollNumber(resultDto.getStudentRollNumber())
                 .orElseThrow(() -> new RuntimeException("Student with Roll no" + resultDto.getStudentRollNumber() + " not found"));
 
