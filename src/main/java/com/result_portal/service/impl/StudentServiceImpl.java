@@ -1,6 +1,7 @@
 package com.result_portal.service.impl;
 
 import com.result_portal.dto.StudentDto;
+import com.result_portal.entity.Gender;
 import com.result_portal.entity.Student;
 import com.result_portal.repository.StudentRepository;
 import com.result_portal.service.StudentService;
@@ -33,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
         student.setName(studentDto.getName());
         student.setAddress(studentDto.getAddress());
-        student.setGender(studentDto.getGender());
+        student.setGender(Gender.valueOf(studentDto.getGender()));
         student.setEmail(studentDto.getEmail());
         student.setDateOfBirth(studentDto.getDateOfBirth());
         student.setPhoneNumber(studentDto.getPhoneNumber());
@@ -41,6 +42,7 @@ public class StudentServiceImpl implements StudentService {
         student.setMotherName(studentDto.getMotherName());
         student.setRollNumber(studentDto.getRollNumber());
         student.setProfilePic(studentDto.getProfilePic());
+        student.setCourse(studentDto.getCourse());
 
         Student saved = studentRepository.save(student);
         return modelMapper.map(saved, StudentDto.class);

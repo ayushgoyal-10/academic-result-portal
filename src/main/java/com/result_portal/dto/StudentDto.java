@@ -29,7 +29,9 @@ public class StudentDto {
     private String fatherName;
     private String motherName;
 
-    private Gender gender;
+    private String gender;
+
+    private String course;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dateOfBirth;

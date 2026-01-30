@@ -32,10 +32,21 @@ public class AdminController {
         return "admin/add-student";
     }
 
-    @PostMapping("/save-student")
-    public String saveStudent(@ModelAttribute StudentDto studentDto) {
-        studentService.createStudent(studentDto);
-        return "redirect:/admin/dashboard";
+    @PostMapping("/save-result")
+    public String saveResult(@ModelAttribute ResultDto resultDto, Model model) {
+        try {
+
+            resultService.createResult(resultDto);
+            return "redirect:/admin/dashboard";
+        } catch (RuntimeException e) {
+            // If Student not found (or other error), catch it!
+            model.addAttribute("error", "Error: Student with Roll Number " + resultDto.getStudentRollNumber() + " not found!");
+
+            model.addAttribute("result", resultDto);
+
+            // Return the HTML page (NOT redirect) to show the error
+            return "admin/add-result";
+        }
     }
 
     @GetMapping("/delete-student/{id}")
@@ -52,9 +63,9 @@ public class AdminController {
         return "admin/add-result";
     }
 
-    @PostMapping("/save-result")
-    public String saveResult(@ModelAttribute ResultDto resultDto) {
-        resultService.createResult(resultDto);
-        return "redirect:/admin/dashboard";
-    }
+//    @PostMapping("/save-result")
+//    public String saveResult(@ModelAttribute ResultDto resultDto) {
+//        resultService.createResult(resultDto);
+//        return "redirect:/admin/dashboard";
+//    }
 }

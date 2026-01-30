@@ -25,8 +25,13 @@ public class Student {
     @Column(unique = true)
     private String email;
     private String address;
+    @Column(nullable = false)
     private String fatherName;
+    @Column(nullable = false)
     private String motherName;
+
+    @Column(nullable = false)
+    private String course;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
