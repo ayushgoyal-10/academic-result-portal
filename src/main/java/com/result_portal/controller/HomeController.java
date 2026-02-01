@@ -47,6 +47,12 @@ public class HomeController {
         }
     }
 
+    @GetMapping("/admin-login")
+    public String adminLoginPage() {
+        return "admin-login";
+    }
+
+
     @GetMapping("/login")
     public String loginPage() {
         return "login";

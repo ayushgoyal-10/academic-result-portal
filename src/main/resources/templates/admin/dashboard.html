@@ -9,7 +9,9 @@
 <nav class="navbar navbar-dark bg-dark mb-4">
     <div class="container">
         <span class="navbar-brand mb-0 h1">Admin Dashboard</span>
-        <a href="/" class="btn btn-outline-light btn-sm">Logout</a>
+        <form action="/admin-logout" method="post" class="d-flex">
+            <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+        </form>
     </div>
 </nav>
 
