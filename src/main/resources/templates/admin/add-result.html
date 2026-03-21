@@ -21,6 +21,7 @@
                     <div class="col-md-6">
                         <label>Student Roll Number</label>
                         <input type="text" th:field="*{studentRollNumber}" class="form-control" placeholder="Enter Roll No of existing student" required>
+                        <small th:if="${#fields.hasErrors('studentRollNumber')}" th:errors="*{studentRollNumber}" class="text-danger"></small>
                     </div>
                     <div class="col-md-6">
                         <label>Semester</label>
@@ -29,15 +30,17 @@
                             <option value="Sem 2">Sem 2</option>
                             <option value="Sem 3">Sem 3</option>
                             <option value="Sem 4">Sem 4</option>
-                            <option value="Sem 4">Sem 5</option>
-                            <option value="Sem 4">Sem 6</option>
+                            <option value="Sem 5">Sem 5</option>
+                            <option value="Sem 6">Sem 6</option>
                         </select>
+                        <small th:if="${#fields.hasErrors('semester')}" th:errors="*{semester}" class="text-danger"></small>
                     </div>
                 </div>
 
                 <hr>
 
                 <h5>Subject Marks</h5>
+                <small th:if="${#fields.hasErrors('subjectList')}" th:errors="*{subjectList}" class="text-danger d-block mb-2"></small>
                 <table class="table table-bordered" id="subjectsTable">
                     <thead class="table-light">
                     <tr>

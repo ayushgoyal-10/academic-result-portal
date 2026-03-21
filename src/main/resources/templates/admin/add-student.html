@@ -19,14 +19,17 @@
                     <div class="col-md-4 mb-3">
                         <label>Roll Number</label>
                         <input type="text" th:field="*{rollNumber}" class="form-control" required>
+                        <small th:if="${#fields.hasErrors('rollNumber')}" th:errors="*{rollNumber}" class="text-danger"></small>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Course</label>
                         <input type="text" th:field="*{course}" class="form-control" placeholder="e.g. BCA" required>
+                        <small th:if="${#fields.hasErrors('course')}" th:errors="*{course}" class="text-danger"></small>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Date of Birth</label>
                         <input type="date" th:field="*{dateOfBirth}" class="form-control" required>
+                        <small th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="text-danger"></small>
                     </div>
                 </div>
 
@@ -35,18 +38,21 @@
                     <div class="col-md-6 mb-3">
                         <label>Full Name</label>
                         <input type="text" th:field="*{name}" class="form-control" required>
+                        <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label>Gender</label>
                         <select th:field="*{gender}" class="form-select">
                             <option value="MALE">MALE</option>
                             <option value="FEMALE">FEMALE</option>
-<!--                            <option value="Other">Other</option>-->
+                            <!--                            <option value="Other">Other</option>-->
                         </select>
+                        <small th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger"></small>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label>Phone Number</label>
                         <input type="text" th:field="*{phoneNumber}" class="form-control">
+                        <small th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger"></small>
                     </div>
                 </div>
 
@@ -54,21 +60,25 @@
                     <div class="col-md-6 mb-3">
                         <label>Father's Name</label>
                         <input type="text" th:field="*{fatherName}" class="form-control" required>
+                        <small th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}" class="text-danger"></small>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Mother's Name</label>
                         <input type="text" th:field="*{motherName}" class="form-control" required>
+                        <small th:if="${#fields.hasErrors('motherName')}" th:errors="*{motherName}" class="text-danger"></small>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label>Address</label>
                     <textarea th:field="*{address}" class="form-control" rows="2"></textarea>
+                    <small th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></small>
                 </div>
 
                 <div class="mb-3">
                     <label>Email</label>
                     <input type="email" th:field="*{email}" class="form-control">
+                    <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></small>
                 </div>
 
                 <button type="submit" class="btn btn-success w-100">Save Student</button>

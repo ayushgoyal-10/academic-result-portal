@@ -16,6 +16,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
+//        CROSS SITE REQUEST FORGERY - disable it if we are using a frontend framework, otherwise dont
+//        its just an extra layer of security
         http.csrf(csrf-> csrf.disable());
 
         http.authorizeHttpRequests(httpRequest->

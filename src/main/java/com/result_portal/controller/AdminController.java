@@ -4,8 +4,10 @@ import com.result_portal.dto.ResultDto;
 import com.result_portal.dto.StudentDto;
 import com.result_portal.service.ResultService;
 import com.result_portal.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -33,7 +35,13 @@ public class AdminController {
     }
 
     @PostMapping("/save-student")
-    public String saveStudent(@ModelAttribute StudentDto studentDto) {
+    public String saveStudent(@Valid @ModelAttribute("student") StudentDto studentDto,
+                              BindingResult bindingResult,
+                              Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("student", studentDto); // ← this is the fix
+            return "admin/add-student";
+        }
         studentService.createStudent(studentDto);
         return "redirect:/admin/dashboard";
     }
@@ -53,7 +61,13 @@ public class AdminController {
     }
 
     @PostMapping("/save-result")
-    public String saveResult(@ModelAttribute ResultDto resultDto, Model model) {
+    public String saveResult(@Valid @ModelAttribute ResultDto resultDto,
+                             Model model,
+                             BindingResult bindingResult) {
+        // if any validation fails, go back to the form — errors show automatically
+        if (bindingResult.hasErrors()) {
+            return "admin/add-result";
+        }
         try {
             resultService.createResult(resultDto);
             return "redirect:/admin/dashboard";
